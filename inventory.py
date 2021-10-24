@@ -19,7 +19,7 @@ class Container:
     self.name = name
     self.parent = parent
   def __str__(self) -> str:
-    return (f"{self.parent} -> " if self.parent != None else "") + f"Container {self.name}"
+    return (f"{self.parent} -> " if self.parent != None else "") + f"{self.name}"
   def __repr__(self) -> str:
     return self.__str__()
 
@@ -28,7 +28,7 @@ class Item:
     self.name = name
     self.container = container
   def __str__(self) -> str:
-    return f"Item '{self.name}' in {self.container}"
+    return f"'{self.name}' in {self.container}"
   def __repr__(self) -> str:
     return self.__str__()
 
@@ -109,6 +109,7 @@ def main():
   if items == None:
     print("Data source is empty!")
     return
+  print(f"searching {len(items)} items...")
 
   search_term = [x for x in [args.f, args.r] if x != None][0]
   
