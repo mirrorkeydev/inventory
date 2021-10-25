@@ -69,7 +69,7 @@ searching 12 containers and 83 items...5 match(es)
 ```
 ## Add item
 ```bash
-$ inventory --add 'pride flag' F
+$ inventory --add "pride flag" F
 Item 'pride flag' added to container F!
 ```
 ## Remove item
