@@ -88,3 +88,4 @@ Item 'pocket calculator' removed!
 - [ ] Allow re-homing of containers
 - [ ] Decrease count of items when removing
 - [ ] Manage orphan items better (or not at all?)
+- [ ] Create convenience "move" operation (remove + add)
