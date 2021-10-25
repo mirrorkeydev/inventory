@@ -15,7 +15,13 @@ In its current form, the CLI just manipulates data stored in a Google Sheet in a
 
 and because I didn't feel like hosting a real database or creating an account with yet another service.
 
-### Constraints With Current Design
+## Object relationships
+
+There are two principle objects: `Container`s and `Item`s. A `Container` holds 0 or more `Container`s and 0 or more `Item`s. `Item`s cannot hold anything, and may only be related to a single `Container`.
+
+The `Container`s are arranged in a forest of n-ary trees, wherein root-level containers are closets, rooms, cabinets, etc., while leaf-level containers tend to be smaller shipping boxes.
+
+## Constraints With Current Design
 
 - New data is fetched for every command.
 - Keyword search is performed as a linear search over all items with regex. With items in the hundreds, this is fine, but I expect performance will quickly degrade if trying to manage inventory with larger orders of magnitude.
@@ -62,7 +68,7 @@ Store the resultant `credentials.json` alongside the `inventory.py` script.
 ## Find item
 ```bash
 $ inventory --find watercolor
-searching 12 containers and 83 items...5 match(es)
+searching 12 containers and 83 items...3 match(es)
   -'watercolor paper' in HALLWAY CLOSET -> A
   -'watercolors' in HALLWAY CLOSET -> B -> D
   -'homemade clay watercolor pan' in UNDER BED -> LEFT DRAWER -> F
