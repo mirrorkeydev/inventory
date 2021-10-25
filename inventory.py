@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
-from secrets import SHEET_ID, SHEET_RANGE
+from secrets import SHEET_ID
 from typing import Dict, List, Tuple
 import argparse
 import re
@@ -14,6 +14,7 @@ import sys
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 DELIM = '; '
+SHEET_RANGE = 'A2:D1000'
 
 class Container:
   def __init__(self, name: str, parent: Container, row_num: str) -> None:
