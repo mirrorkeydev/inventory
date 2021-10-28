@@ -165,12 +165,15 @@ def main() -> None:
     print(f'searching {len(containers)} containers and {len(items)} items...', end='')
     results = search_items(args.remove_term, items)
     print(f'{len(results)} match(es)')
+    if not len(results):
+      print('Make sure that the item you want to remove exists.')
+      return
     for i, item in enumerate(results):
       print(f'{i}: {item}')
     item_num = input(f'Which item would you like to remove? (Enter #0-{len(results)-1}): ')
     remove_item(s, results[int(item_num)])
     orphanize_item(s, item, orphan_items)
-    print(f'Item \'{args.remove_term}\' removed!')
+    print(f'Item \'{results[int(item_num)].name}\' removed!')
     return
 
   if args.add_term != None:
