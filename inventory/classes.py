@@ -22,8 +22,6 @@ class Item:
     return str(self.__dict__)
   def __eq__(self, other) -> bool:
     return self.__dict__ == other.__dict__
-  def pprint(self):
-    return f'\'{self.name}\' in {self.container}'
   def add_attr(self, key, val) -> Item:
     self.attributes[key] = val
     return self

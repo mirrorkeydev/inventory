@@ -63,8 +63,8 @@ Your sheet ID can be found in its URL: `docs.google.com/spreadsheets/d/<SHEET-ID
 {"SHEET_ID": "sheet-id"}
 ```
 
-### 3. [Generate Google Sheet API credentials](https://developers.google.com/workspace/guides/create-credentials)
-Store the resultant `credentials.json` in the `auth` directory.
+### 3. Set up GCP
+Create a [GCP project](https://developers.google.com/workspace/guides/create-project), enabling the Sheets API with the 'https://www.googleapis.com/auth/spreadsheets' scope. [Generate Google Sheet API credentials](https://developers.google.com/workspace/guides/create-credentials), and store the resultant `credentials.json` in the `auth` directory.
 
 ### 4. Install dev dependencies
 ```
