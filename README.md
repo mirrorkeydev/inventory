@@ -25,6 +25,7 @@ The `Container`s are arranged in a forest of n-ary trees, wherein root-level con
 
 - New data is fetched for every command.
 - Keyword search is performed as a linear search over all items with regex. With items in the hundreds, this is fine, but I expect performance will quickly degrade if trying to manage inventory with larger orders of magnitude.
+- Serialization cannot be too convoluted -- I want to keep the Google Sheet readable and editable by a human if necessary. Mass updates (such as initialization) are painful using the CLI anyhow, so keeping the Sheet accessible is important.
 
 # Setup
 
@@ -48,18 +49,18 @@ Under Bed/
 
 **Container**|**Parent Container**|**Contents (items)**|**Orphan Items**
 :-----:|:-----:|:-----:|:-----:
-HALLWAY CLOSET|||TBD
+HALLWAY CLOSET|||TBD, can leave blank for now
 A|HALLWAY CLOSET|watercolor paper|
 B|HALLWAY CLOSET|watercolors; checkbook| 
 C|B|TI-84 graphing calculator| 
 ...|...|...|
 
-Currently there is no support for adding containers with the CLI, so you'll have to bootstrap your containers by hand, editing the Google Sheet. See [TODOs](#TODOs).
+Currently there is no support for adding containers with the CLI, so you'll have to bootstrap your containers by hand, editing the Google Sheet (see [TODOs](#TODOs)). This is likely the more comfortable option for such a large operation anyway, and containers are unlikely to change frequently.
 
 ### 2. Create a `secrets.json` in the `auth` directory:
-Your sheet id can be found in the URL: `docs.google.com/spreadsheets/d/<SHEET-ID>/`.
+Your sheet ID can be found in its URL: `docs.google.com/spreadsheets/d/<SHEET-ID>/`.
 ```json
-{"SHEET_ID": "your-sheet-id"}
+{"SHEET_ID": "sheet-id"}
 ```
 
 ### 3. [Generate Google Sheet API credentials](https://developers.google.com/workspace/guides/create-credentials)
@@ -133,3 +134,4 @@ Item 'nasa sticker' moved to container C!
 - [x] Create convenience "move" operation (remove + add)
 - [ ] Add command to output all recursive container contents
 - [ ] Add ability to find expired items
+- [ ] Remove DRY violations in `cli.py`
