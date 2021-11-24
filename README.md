@@ -57,8 +57,9 @@ C|B|TI-84 graphing calculator|
 Currently there is no support for adding containers with the CLI, so you'll have to bootstrap your containers by hand, editing the Google Sheet. See [TODOs](#TODOs).
 
 ### 2. Create a `secrets.json` in the `auth` directory:
+Your sheet id can be found in the URL: `docs.google.com/spreadsheets/d/<SHEET-ID>/`.
 ```json
-{"SHEET_ID": "your-sheet-id"} // From: docs.google.com/spreadsheets/d/<SHEET-ID>/
+{"SHEET_ID": "your-sheet-id"}
 ```
 
 ### 3. [Generate Google Sheet API credentials](https://developers.google.com/workspace/guides/create-credentials)
@@ -121,7 +122,7 @@ searching 12 containers and 84 items...2 match(es)
 0: 'plant sticker' in HALLWAY CLOSET -> B -> C
 1: 'nasa sticker' in UNDER BED -> RIGHT DRAWER -> G
 Which item would you like to move? (Enter 0-1): 1
-Item 'nasa sticker' moved to container 'C'!
+Item 'nasa sticker' moved to container C!
 ```
 # TODOs
 - [x] Refactor to use modules correctly

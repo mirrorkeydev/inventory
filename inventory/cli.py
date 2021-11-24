@@ -91,7 +91,7 @@ def main() -> None:
     remove_item(s, item)
     item.container = containers[container_name]
     add_item(s, item)
-    print(f'Item \'{item_name}\' moved to container \'{container_name}\'!')
+    print(f'Item \'{item_name}\' moved to container {container_name}!')
     return
 
 if __name__ == '__main__':
