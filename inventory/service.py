@@ -5,28 +5,28 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from typing import Dict, List, Tuple
-from auth.secrets import SHEET_ID
-from classes import Item, Container
+from inventory.classes import Item, Container
 import os
 import sys
+import json
+from pathlib import Path
 
 SHEET_RANGE = 'A2:D1000'
 DELIM = '; '
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+AUTH_DIR = Path(__file__).joinpath('../../auth')
+SECRETS = json.loads(AUTH_DIR.joinpath('secrets.json').read_text())
+SHEET_ID: str = SECRETS['SHEET_ID']
 
 def create_service():
-  # Navigate to the script's location, so we can run this script from any
-  # directory but still reference the credentials.json file inside it.
-  os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
-  os.chdir("./auth")
-
   creds = None
   # The file token.json stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
   # time.
-  if os.path.exists('token.json'):
-    creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+  token = AUTH_DIR.joinpath('token.json')
+  if token.is_file():
+    creds = Credentials.from_authorized_user_file(str(token), SCOPES)
 
   # If there are no (valid) credentials available, let the user log in.
   if not creds or not creds.valid:
@@ -36,13 +36,12 @@ def create_service():
         creds.refresh(Request())
         success = True
       except:
-        os.remove('token.json')
+        token.unlink()
     if not success:
-      flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+      flow = InstalledAppFlow.from_client_secrets_file(str(AUTH_DIR.joinpath('credentials.json')), SCOPES)
       creds = flow.run_local_server(port=0)
     # Save the credentials for the next run
-    with open('token.json', 'w') as token:
-      token.write(creds.to_json())
+    token.write_text(creds.to_json())
 
   service = build('sheets', 'v4', credentials=creds)
   return service

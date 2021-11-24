@@ -9,6 +9,7 @@ google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 
 [dev-packages]
+pytest = "*"
 
 [requires]
 python_version = "3.9"

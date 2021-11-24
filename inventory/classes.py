@@ -15,6 +15,7 @@ class Item:
   def __init__(self, name: str, container: Container) -> None:
     self.name = name
     self.container = container
+    self.attributes = {}
   def __str__(self) -> str:
     return f'\'{self.name}\' in {self.container}'
   def __repr__(self) -> str:

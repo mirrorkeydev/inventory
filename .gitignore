@@ -1,4 +1,3 @@
-credentials.json
-token.json
-secrets.py
+auth/*.json
 __pycache__
+inventory.egg-info

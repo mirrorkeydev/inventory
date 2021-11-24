@@ -1,8 +1,6 @@
-from __future__ import annotations
-from auth.secrets import SHEET_ID
 from typing import List
-from classes import Item
-from service import fetch_data, create_service, remove_item, add_item, orphanize_item
+from inventory.classes import Item
+from inventory.service import fetch_data, create_service, remove_item, add_item, orphanize_item
 import argparse
 import re
 

@@ -70,10 +70,9 @@ pipenv install
 
 ### 5. (Optional) Enable system-wide usage
 
-Windows:
-Create a folder for batch files somewhere, and add that folder to PATH. Create `inventory.bat` with contents:
-```
-C:\Users\USER\.virtualenvs\VENV_NAME\Scripts\python.exe C:\PATH\TO\inventory\src\inventory.py %*
+```bash
+# In top-level inventory directory:
+pip3 install -e .
 ```
 
 # Usage
