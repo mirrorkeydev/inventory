@@ -63,7 +63,7 @@ SHEET_ID = "your-sheet-id"
 ### 3. [Generate Google Sheet API credentials](https://developers.google.com/workspace/guides/create-credentials)
 Store the resultant `credentials.json` alongside the `inventory.py` script.
 
-### 4. Install dependencies
+### 4. Install dev dependencies
 ```
 pipenv install
 ```
@@ -71,7 +71,6 @@ pipenv install
 ### 5. (Optional) Enable system-wide usage
 
 ```bash
-# In top-level inventory directory:
 pip3 install -e .
 ```
 
