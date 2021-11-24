@@ -54,7 +54,7 @@ B|HALLWAY CLOSET|watercolors; checkbook|
 C|B|TI-84 graphing calculator| 
 ...|...|...|
 
-Currently there is no support for adding containers with the CLI, so you'll have to bootstrap your containers "by hand", editing the Google Sheet. See [TODOs](#TODOs).
+Currently there is no support for adding containers with the CLI, so you'll have to bootstrap your containers by hand, editing the Google Sheet. See [TODOs](#TODOs).
 
 ### 2. Create a `secrets.py`:
 ```
@@ -62,6 +62,19 @@ SHEET_ID = "your-sheet-id"
 ```
 ### 3. [Generate Google Sheet API credentials](https://developers.google.com/workspace/guides/create-credentials)
 Store the resultant `credentials.json` alongside the `inventory.py` script.
+
+### 4. Install dependencies
+```
+pipenv install
+```
+
+### 5. (Optional) Enable system-wide usage
+
+Windows:
+Create a folder for batch files somewhere, and add that folder to PATH. Create `inventory.bat` with contents:
+```
+C:\Users\USER\.virtualenvs\VENV_NAME\Scripts\python.exe C:\PATH\TO\inventory\src\inventory.py %*
+```
 
 # Usage
 
@@ -95,3 +108,5 @@ Item 'pocket calculator' removed!
 - [ ] Decrease count of items when removing
 - [ ] Manage orphan items better (or not at all?)
 - [ ] Create convenience "move" operation (remove + add)
+- [ ] Add command to output all recursive container contents
+- [ ] Add ability to find expired items
