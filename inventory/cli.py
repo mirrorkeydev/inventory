@@ -20,16 +20,33 @@ def search_items(search_term: str, items: List[Item]) -> List[Item]:
 
 def main() -> None:
   parser = argparse.ArgumentParser(prog='Inventory CLI')
-  parser.add_argument('-f', '--find', dest='find_term', type=str, help='find an item')
-  parser.add_argument('-r', '--remove', dest='remove_term', type=str, help='remove an item')
-  parser.add_argument('-a', '--add', dest='add_term', type=str, help='add an item and specify a container.', nargs=2)
-  parser.add_argument('-m', '--move', dest='move_term', type=str, help='specify an item and specify a destination container.', nargs=2)
+  group = parser.add_mutually_exclusive_group()
+  group.add_argument('-f', '--find', dest='find_term', type=str, help='find an item')
+  group.add_argument('-r', '--remove', dest='remove_term', type=str, help='remove an item')
+  group.add_argument('-a', '--add', dest='add_term', type=str, help='add an item and specify a container.', nargs=2)
+  group.add_argument('-m', '--move', dest='move_term', type=str, help='specify an item and specify a destination container.', nargs=2)
+  group.add_argument('-s', '--stats', action='store_true', help='display stats about your inventory.')
+  group.add_argument('-v', '--validate', action='store_true', help='check that your Sheet is parseable')
   args = parser.parse_args()
 
   s = create_service()
   containers, items, orphan_items = fetch_data(s)
   if containers == None or items == None:
     print('Data source is empty!')
+    return
+
+  if args.validate:
+    # Right now, the --validate option is just a convenience option for "do nothing but
+    # fetch the data and let the errors show themselves", but in the future some extra
+    # validation might go here.
+    print("Looks good!")
+    return
+
+  if args.stats:
+    print(f"""Your inventory stats:
+      - {len(containers)} containers
+      - {len(items)} items
+    """)
     return
 
   if args.find_term != None:

@@ -25,3 +25,6 @@ class Item:
   def add_attr(self, key, val) -> Item:
     self.attributes[key] = val
     return self
+
+class InventoryException(Exception):
+  pass

@@ -46,7 +46,7 @@ def create_service():
   service = build('sheets', 'v4', credentials=creds)
   return service
 
-def fetch_data(service) -> Tuple[List[Item], List[Item], str] | None:
+def fetch_data(service) -> Tuple[Dict[str, Container], List[Item], str] | None:
   sheet = service.spreadsheets()
   result = sheet.values().get(spreadsheetId=SHEET_ID, range=SHEET_RANGE).execute()
   values: List[List[str]] = result.get('values', [])
