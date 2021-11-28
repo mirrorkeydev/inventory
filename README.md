@@ -4,7 +4,15 @@
   <p>Personal Inventory Management CLI</p>
 </h1>
 
-A rudimentary inventory management system, allowing users to easily locate, add, remove, and generally organize personal belongings. Inspired by the many reused shipping boxes I use to hold my posessions, and my love of rearranging them (and subsequent exasperation when I lose track of where I've put something).
+A rudimentary inventory management system, allowing users to easily locate, add, remove, and generally organize personal belongings. Inspired by the many reused shipping boxes I use to hold my posessions, and my love of reorganizing them (and subsequent exasperation when I lose track of where I've put something).
+
+This system is still a work in progress. Ideally, it hopes to fulfill the following user stories:
+- I want to instantly find items
+- I want to organize/relocate items
+- I want to find items with certain attributes. For example, instantly identifying all expired medication and personal care products, so I can dispose of them and free up space.
+- I want to be able to check the data from my phone
+- I want to be able to send the data to a significant other without requiring them to use my system
+- I don't want to spend too much time maintaining the system, but don't mind an initial setup cost
 
 # Architecture
 
@@ -15,7 +23,7 @@ In its current form, the CLI just manipulates data stored in a Google Sheet in a
 - data sharing with anyone I share the sheet with
 - easy rollbacks using version history
 
-and because I didn't feel like hosting a real database or creating an account with yet another service. Yes, this means I had to write a bunch of de/serialization code. Also, I thought it would be fun.
+and because I didn't feel like hosting a real database or creating an account with yet another service. Yes, this means I had to write a bunch of de/serialization code. Also, I thought it might be fun to ~~mis~~use Sheets for something like this.
 
 ## Object relationships
 
@@ -170,7 +178,7 @@ Looks good!
 - [x] Decrease count of items when removing
 - [ ] Manage orphan items better (or not at all?)
 - [x] Create convenience "move" operation (remove + add)
+- [ ] Enable attributes when adding item
 - [ ] Add command to output all recursive container contents
 - [ ] Add ability to find expired items
-- [ ] Remove DRY violations in `cli.py`
 - [ ] Expand validation functionality
