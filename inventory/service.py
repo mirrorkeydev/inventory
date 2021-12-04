@@ -40,8 +40,9 @@ def create_service():
     if not success:
       flow = InstalledAppFlow.from_client_secrets_file(str(AUTH_DIR.joinpath('credentials.json')), SCOPES)
       creds = flow.run_local_server(port=0)
-    # Save the credentials for the next run
-    token.write_text(creds.to_json())
+    if creds != None:
+      # Save the credentials for the next run
+      token.write_text(creds.to_json())
 
   service = build('sheets', 'v4', credentials=creds)
   return service

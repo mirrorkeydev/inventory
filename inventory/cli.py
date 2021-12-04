@@ -30,10 +30,11 @@ def main() -> None:
   args = parser.parse_args()
 
   s = create_service()
-  containers, items, orphan_items = fetch_data(s)
-  if containers == None or items == None:
+  data = fetch_data(s)
+  if data == None:
     print('Data source is empty!')
     return
+  containers, items, orphan_items = data
 
   if args.validate:
     # Right now, the --validate option is just a convenience option for "do nothing but
@@ -71,10 +72,11 @@ def main() -> None:
       print('You entered an invalid item.')
       return
     item = results[item_num]
-    if item.attributes.get("count") != None:
+    count = item.attributes.get("count")
+    if count != None:
       choice = input("Would you like to decrement this item or remove it completely? (Enter d# or r): ")
       if (match := re.match(r"^d(\d+)$", choice)):
-        item.attributes["count"] = item.attributes.get("count") - int(match[1])
+        item.attributes["count"] = count - int(match[1])
         if item.attributes["count"] > 0:
           update_item(s, item)
           print(f"Item \'{item.name}\' decremented by {match[1]}!")
