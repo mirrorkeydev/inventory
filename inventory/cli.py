@@ -5,7 +5,6 @@ from inventory.service import (
   create_service,
   remove_item,
   add_item,
-  orphanize_item,
   update_item
 )
 import argparse
@@ -83,7 +82,6 @@ def main() -> None:
           return
         print("Decrementing to 0 items, removing the item.")
     remove_item(s, item)
-    orphanize_item(s, item, orphan_items)
     print(f'Item \'{item.name}\' removed!')
     return
 

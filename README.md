@@ -56,13 +56,13 @@ Under Bed/
 
 ### 1. Create a Google Sheet of the form:
 
-**Container**|**Parent Container**|**Contents (items)**|**Orphan Items**
-:-----:|:-----:|:-----:|:-----:
-HALLWAY CLOSET|||TBD, can leave blank for now
-A|HALLWAY CLOSET|watercolor paper|
-B|HALLWAY CLOSET|watercolors {"count": 2}; checkbook| 
-C|B|TI-84 graphing calculator| 
-...|...|...|
+**Container**|**Parent Container**|**Contents (items)**
+:-----:|:-----:|:-----:
+HALLWAY CLOSET||
+A|HALLWAY CLOSET|watercolor paper
+B|HALLWAY CLOSET|watercolors {"count": 2}; checkbook
+C|B|TI-84 graphing calculator
+...|...|...
 
 Currently there is no support for adding containers with the CLI, so you'll have to bootstrap your containers by hand, editing the Google Sheet (see [TODOs](#TODOs)). This is likely the more comfortable option for such a large operation anyway, and containers are unlikely to change frequently.
 
@@ -176,7 +176,7 @@ Looks good!
 - [ ] Allow adding/removing containers
 - [ ] Allow re-homing of containers
 - [x] Decrease count of items when removing
-- [ ] Manage orphan items better (or not at all?)
+- [x] Manage orphan items better (or not at all?)
 - [x] Create convenience "move" operation (remove + add)
 - [ ] Enable attributes when adding item
 - [ ] Add command to output all recursive container contents

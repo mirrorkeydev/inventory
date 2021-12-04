@@ -57,16 +57,6 @@ def fetch_data(service) -> Tuple[Dict[str, Container], List[Item], str] | None:
   else:
     return deserialize_sheet(values)
 
-def orphanize_item(service, item: Item, orphan_items: str) -> None:
-  request = service.spreadsheets().values().update(
-    spreadsheetId=SHEET_ID, range=f'D2', valueInputOption='USER_ENTERED',
-    body={
-      'range': f'D2',
-      'values': [[orphan_items + f'; {item.name}']]
-    }
-  )
-  request.execute()
-
 def remove_item(service, item: Item) -> None:
   remaining_items: List[Item] = [x for x in item.container.items if x is not item]
   request = service.spreadsheets().values().update(
