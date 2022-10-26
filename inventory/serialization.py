@@ -34,7 +34,7 @@ def deserialize_container_contents(raw_items: str, container: Container) -> List
 
 def deserialize_sheet(raw_values: List[List[str]]):
   item_list: List[Item] = []
-  uncontainered_items: str = raw_values[0][3]
+  uncontainered_items: str = raw_values[0][3] if len(raw_values[0]) >= 4 else ""
   containers: Dict[str, Container] = {}
 
   # Grab all container names and create Containers
