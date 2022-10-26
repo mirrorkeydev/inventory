@@ -86,6 +86,8 @@ Create a [GCP project](https://developers.google.com/workspace/guides/create-pro
 
 ### 4. Install dev dependencies
 ```
+# If you don't already have pipenv, then:
+# pip install pipenv
 pipenv install
 ```
 
