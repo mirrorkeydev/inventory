@@ -39,6 +39,9 @@ def deserialize_sheet(raw_values: List[List[str]]):
 
   # Grab all container names and create Containers
   for i, row in enumerate(raw_values):
+    if len(row) == 0:
+      continue
+
     row_num = i + 2
     container_name = row[0]
     if container_name is None or container_name == '':
@@ -54,6 +57,9 @@ def deserialize_sheet(raw_values: List[List[str]]):
   # come before their parents, and we can't reference an object
   # we haven't encountered yet.
   for row in raw_values:
+    if len(row) == 0:
+      continue
+
     container_name = row[0]
     parent_name = row[1] if len(row) > 1 else None
     contents = row[2] if len(row) > 2 else None
